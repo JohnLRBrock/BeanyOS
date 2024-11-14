@@ -149,6 +149,8 @@
     zoom-us
 
     # unstablePkgs.code-cursor
+    gh
+    github-desktop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
