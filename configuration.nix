@@ -127,19 +127,54 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    gh
+    github-desktop
     vim 
     vscode
     obsidian
 
     discord
 
+    # ~~ Music production software ~~
     reaper
     alsa-scarlett-gui
-    yabridge
+    transcribe
+    # Instrument plugins
+    vital
+    helm
+    zynaddsubfx
+    dexed
+    odin2
+    geonkick
+    surge-XT
+    drumgizmo
+    hydrogen
+    # Audio plugins
+    distrho
+    calf
+    eq10q
+    lsp-plugins
+    x42-plugins
+    x42-gmsynth
+    x42-avldrums
+    dragonfly-reverb
+    guitarix
+    FIL-plugins
+    delayarchitect
+    airwindows-lv2
+    stone-phaser
+    # autotalent
+    talentedhack
+    ninjas2
+    sfizz
+    
+    
+    
+    
+    # Support for Windows VST2/VST3 plugins
+    yabridge 
     yabridgectl
     wineWowPackages.stable
-    bottles
-    transcribe
 
     spotify
     spotify-qt
@@ -149,8 +184,6 @@
     zoom-us
 
     # unstablePkgs.code-cursor
-    gh
-    github-desktop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
