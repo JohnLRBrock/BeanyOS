@@ -75,22 +75,32 @@
     openFirewall = true;
   };
 
+  sound.enable = true;
+
   # Disable pusleaudio when enabling sound with pipewire.
   hardware.pulseaudio.enable = false; 
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    # jack.enable = true;
+    jack.enable = true;
+    wireplumber.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     # media-session.enable = true;
   };
-
+  # Realtime privileges for audio production
+  security.rtkit.enable = true;
+  security.pam.loginLimits = [
+    { domain = "@audio"; item = "memlock"; type = "-";    value = "unlimited"; }
+    { domain = "@audio"; item = "rtprio";  type = "-";    value = "99"; }
+    { domain = "@audio"; item = "nofile";  type = "soft"; value = "99999"; }
+    { domain = "@audio"; item = "nofile";  type = "hard"; value = "524288"; }
+  ];
   musnix.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -119,9 +129,14 @@
     };
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
+
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [ "electron-25.9.0" ];
+    permittedInsecurePackages = [ "electron-25.9.0" "openssl-1.1.1w" ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -137,6 +152,7 @@
 
     # ~~ Music production software ~~
     reaper
+    qpwgraph
     alsa-scarlett-gui
     transcribe
     # Instrument plugins
@@ -168,19 +184,19 @@
     ninjas2
     sfizz
     
-    
-    
-    
     # Support for Windows VST2/VST3 plugins
     yabridge 
     yabridgectl
     wineWowPackages.stable
+    # When installing iLok with wine you might get some errors complaining about the version of Windows 7
+    # - You can fix that issue by running winecfg in the console and then upgrading to Windows 10.
+    # After doing that I got an error that said something like `pnputil.exe failed blah blah 9009`.
+    # - The trick is that you need a very specific version of the iLok License Manager (5.6.1): https://www.filehorse.com/download-ilok-license-manager-64/73904/
 
     spotify
     spotify-qt
 
     # qbittorrent
-    steam
     zoom-us
 
     # unstablePkgs.code-cursor
