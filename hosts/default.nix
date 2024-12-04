@@ -57,7 +57,7 @@ in
   # Styling options
   stylix = {
     enable = true;
-    image = ../wallpapers/godzilla-neon.png;
+    image = ../wallpapers/sakura.png;
     polarity = "dark";
     opacity.terminal = 0.9;
   };
@@ -129,6 +129,16 @@ in
     };
   };
 
+  # programs.vscode = {
+    # enable = true;
+    # extensions = with pkgs.vscode-extensions; [
+      # dracula-theme.theme-dracula
+      # vscodevim.vim
+      # bbenoist.nix
+      # ms-python.python
+    # ];
+  # };
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -143,7 +153,6 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim 
-    vscode
     kitty
     code-cursor
     nodejs_23
