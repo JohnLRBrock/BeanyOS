@@ -18,7 +18,7 @@
         ./hosts
         ./hosts/desktop
         ./modules/audio.nix
-        # ./modules/nvidia-drivers.nix
+        ./modules/nvidia-drivers.nix
         inputs.stylix.nixosModules.stylix
         inputs.musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager

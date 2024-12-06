@@ -68,12 +68,37 @@ in
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    # settings.gui = {
-    #   user = "myuser";
-    #   password = "mypassword";
-    # };
+    settings = {
+      devices = {
+        "desktop" = { id = "PKXKSII-ALSROEH-ICJASET-XCSGCJV-AX7VU5I-26BS3KI-EUSZGJT-44TMTQE"; };
+        "laptop" = { id = "6KJLABY-Z2FT63T-RXUT5PI-AQNE3FY-ELWG2CF-XEY6QSM-REHB2KN-EFIHUQG"; };
+        "phone" = { id = "ZX5FH5U-J2QA7R6-BV7TXD2-Q5LI6E2-DSLPKZW-4WKS3U4-HNVCEIS-TUOSQQG"; };
+      };
+      folders = {
+        "Sync" = {
+          path = "~/Shared/Sync/";
+          devices = [ "desktop" "laptop" "phone" ];
+        };
+        "Obsidian" = {
+          path = "~/Shared/Obsidian Vault/";
+          devices = [ "desktop" "laptop" "phone" ];
+        };
+        "Pictures Backup" = {
+          path = "~/Shared/Pictures/Camera";
+          devices = [ "desktop" "laptop" ];
+        };
+        "Camera" = {
+          path = "~/Shared/Pictures/Camera";
+          devices = [ "desktop" "laptop" "phone" ];
+        };
+      };
+    };
+      # user = "myuser";
+      # password = "mypassword";
   };
-
+  # Don't create default ~/Sync folder
+  systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; 
+ 
   # Enable hotkeys and keyswaps
   services.keyd = {
     enable = true;
@@ -99,13 +124,23 @@ in
   };
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
 
-
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput = {
+    enable = true;
+    # Disable mouse acceleration
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "-10.0";
+    };
+
+    touchpad = {
+      accelProfile = "flat";
+    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.john = {
@@ -119,31 +154,13 @@ in
   # Install firefox
   programs.firefox.enable = true;
 
-  # Install git
-  programs.git = {
-    enable = true;
-    # userName = "JohnLRBrock";
-    # userEmail = "johnlrbrock@gmail.com";
-    config = {
-      init.defaultBranch = "main";
-    };
-  };
-
-  # programs.vscode = {
-    # enable = true;
-    # extensions = with pkgs.vscode-extensions; [
-      # dracula-theme.theme-dracula
-      # vscodevim.vim
-      # bbenoist.nix
-      # ms-python.python
-    # ];
-  # };
-
+  # Install Steam
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
   };
 
+  # Create package exceptions
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [ "electron-25.9.0" "openssl-1.1.1w" ];
@@ -153,6 +170,7 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim 
+    vscode
     kitty
     code-cursor
     nodejs_23
@@ -173,7 +191,8 @@ in
 
     qbittorrent
     # A tool to create bootable live USB drives from ISO images.
-    unetbootin
+    ventoy-full
+    # unetbootin
     zoom-us
 
     # Simple bar for Wayland/Hyprland
