@@ -79,11 +79,11 @@ in
           path = "~/Shared/Sync/";
           devices = [ "desktop" "laptop" "phone" ];
         };
-        "Obsidian" = {
+        "Obsidian Vault" = {
           path = "~/Shared/Obsidian Vault/";
           devices = [ "desktop" "laptop" "phone" ];
         };
-        "Pictures Backup" = {
+        "Picture Backup" = {
           path = "~/Shared/Pictures/Camera";
           devices = [ "desktop" "laptop" ];
         };
