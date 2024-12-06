@@ -84,7 +84,7 @@ in
           devices = [ "desktop" "laptop" "phone" ];
         };
         "Picture Backup" = {
-          path = "~/Shared/Pictures/Camera";
+          path = "~/Shared/Pictures/Backup";
           devices = [ "desktop" "laptop" ];
         };
         "Camera" = {
