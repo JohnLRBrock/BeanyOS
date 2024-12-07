@@ -34,6 +34,7 @@
       modules = [
         ./hosts
         ./hosts/laptop
+        ./modules/audio.nix
         inputs.stylix.nixosModules.stylix
         inputs.musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
