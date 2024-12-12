@@ -57,7 +57,7 @@ in
   # Styling options
   stylix = {
     enable = true;
-    image = ../wallpapers/sakura.png;
+    image = ../wallpapers/sakura2.jpg;
     polarity = "dark";
     opacity.terminal = 0.9;
   };
@@ -169,7 +169,8 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
+    neovim
     vscode
     kitty
     code-cursor
