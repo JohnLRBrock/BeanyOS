@@ -57,7 +57,7 @@ in
   # Styling options
   stylix = {
     enable = true;
-    image = ../wallpapers/sakura2.jpg;
+    image = ../wallpapers/green-fish.jpg;
     polarity = "dark";
     opacity.terminal = 0.9;
   };
@@ -98,7 +98,7 @@ in
   };
   # Don't create default ~/Sync folder
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; 
- 
+
   # Enable hotkeys and keyswaps
   services.keyd = {
     enable = true;
@@ -117,15 +117,18 @@ in
     };
   };
 
-  # Enable CUPS to print documents and avahi to discover printers
-  services.printing = {
-    enable = true;
-    # drivers = [ pkgs.brlaser pkgs.cups-brother-hll2350dw ];
-  };
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
+  # Enable CUPS to print documents 
+  services.printing.enable = true;
+
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "Brother_HL-L2350DW_series";
+        deviceUri = "ipp://192.168.0.161:631/ipp";
+        model = "everywhere";
+      }
+    ];
+    ensureDefaultPrinter = "Brother_HL-L2350DW_series";
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
