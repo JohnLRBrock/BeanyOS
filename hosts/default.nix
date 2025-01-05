@@ -162,9 +162,6 @@ in
     remotePlay.openFirewall = true;
   };
 
-  # enable qbittorrent
-  services.qbittorrent.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -233,8 +230,8 @@ in
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedUDPPorts = [ 8080 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
