@@ -117,9 +117,7 @@ in
     };
   };
 
-  # Enable CUPS to print documents 
-  services.printing.enable = true;
-
+  services.printing.enable = true; # Enable CUPS to print documents
   hardware.printers = {
     ensurePrinters = [
       {
@@ -162,13 +160,7 @@ in
     enable = true;
     remotePlay.openFirewall = true;
   };
-
-  # Create package exceptions
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [ "electron-25.9.0" "openssl-1.1.1w" ];
-  };
-
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
