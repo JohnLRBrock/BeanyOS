@@ -67,11 +67,11 @@ in
 
     environment.systemPackages = [ pkgs.qbittorrent ];
 
-    nixpkgs.overlays = [
-      (final: prev: {
-        qbittorrent = prev.qbittorrent.override { guiSupport = false; };
-      })
-    ];
+    # nixpkgs.overlays = [
+    #   (final: prev: {
+    #     qbittorrent = prev.qbittorrent.override { guiSupport = false; };
+    #   })
+    # ];
 
     networking.firewall = mkIf cfg.openFirewall {
       allowedTCPPorts = [ cfg.port ];
