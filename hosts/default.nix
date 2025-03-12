@@ -1,12 +1,6 @@
 # Shared configuration
 { config, pkgs, audio, ... }:
 
-let
-  unstablePkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {
-    system = builtins.currentSystem;
-    config = { allowUnfree = true; };
-  };
-in 
 {
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
@@ -14,6 +8,29 @@ in
   # Bootloader.  
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "ntfs" ];
+  systemd.enableEmergencyMode = false;
+
+  # Secrets
+  sops.defaultSopsFile = ../secrets/default.yaml;
+  sops.age.keyFile = "nix/persist/var/lib/sops-nix/key.txt";
+  # Permission modes are in octal representation (same as chmod),
+  # the digits represent: user|group|owner
+  # 7 - full (rwx)
+  # 6 - read and write (rw-)
+  # 5 - read and execute (r-x)
+  # 4 - read only (r--)
+  # 3 - write and execute (-wx)
+  # 2 - write only (-w-)
+  # 1 - execute only (--x)
+  # 0 - none (---)
+  # sops.secrets.example-secret.mode = "0440";
+  # Either a user id or group name representation of the secret owner
+  # It is recommended to get the user name from `config.users.users.<?name>.name` to avoid misconfiguration
+  # sops.secrets.example-secret.owner = config.users.users.john.name;
+  # Either the group id or group name representation of the secret group
+  # It is recommended to get the group name from `config.users.users.<?name>.group` to avoid misconfiguration
+  # sops.secrets.example-secret.group = config.users.users.john.group;    
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -173,18 +190,21 @@ in
     nodejs_23
     gh
     github-desktop
+    age
+    python3Full
 
     syncthing
     syncthing-tray
     obsidian
     kdePackages.filelight
+    ntfs3g
 
     discord
     slack
 
     spotify
-    spotify-tray
-    spotify-qt
+    strawberry
+    vlc
 
     qbittorrent
     # A tool to create bootable live USB drives from ISO images.

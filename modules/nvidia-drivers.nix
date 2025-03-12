@@ -7,6 +7,7 @@ in
     enable = lib.mkEnableOption "Enable Nvidia Drivers";
   };
 
+
   config = lib.mkIf cfg.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
@@ -31,5 +32,12 @@ in
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
+
+    # Nvidia breaks the ability to sleep so disable it here
+    # https://nixos.wiki/wiki/Nvidia#Graphical_Corruption_and_System_Crashes_on_Suspend.2FResume
+    systemd.targets.sleep.enable = false;
+    systemd.targets.suspend.enable = false;
+    systemd.targets.hibernate.enable = false;
+    systemd.targets.hybrid-sleep.enable = false;
   };
 }

@@ -30,6 +30,15 @@ in
     enable = true;
     userName = "${gitUsername}";
     userEmail = "${gitEmail}";
+    aliases = {
+      co = "checkout";
+      s = "status";
+    };
+    extraConfig = {
+      safe = {
+        directory = "/etc/nixos";
+      };
+    };
   };
 
   home.stateVersion = "23.11";

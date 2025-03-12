@@ -9,9 +9,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     musnix.url = "github:musnix/musnix";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, musnix, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, musnix, home-manager, sops-nix, ... }@inputs: {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -22,6 +23,7 @@
         inputs.stylix.nixosModules.stylix
         inputs.musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
+        sops-nix.nixosModules.sops
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -38,6 +40,7 @@
         inputs.stylix.nixosModules.stylix
         inputs.musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
+        sops-nix.nixosModules.sops
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

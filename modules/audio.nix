@@ -1,5 +1,5 @@
 # Audio configuration
-{ config, pkgs, audio, ... }:
+{ config, pkgs, audio, inputs, ... }:
 
 let
   unstablePkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {
@@ -14,34 +14,47 @@ in
     qpwgraph
     alsa-scarlett-gui
     transcribe
-    # Instrument plugins
+    musescore
+
+    # ~ Instrument plugins ~ 
+    # - Synths - 
     vital
-    helm
-    zynaddsubfx
     dexed
-    odin2
-    geonkick
     surge-XT
-    drumgizmo
-    hydrogen
-    # Audio plugins
-    distrho-ports
-    calf
-    eq10q
+    # helm
+    # zynaddsubfx
+    # odin2
+
+    # - Drums - 
+    geonkick
+    # drumgizmo
+    # hydrogen
+    # pianoteq.standard-8
+
+    # - Misc Instruments - 
+    decent-sampler
+
+    # ~ Audio plugins ~
+    # - Plugin Packs -
     lsp-plugins
-    x42-plugins
-    x42-gmsynth
-    x42-avldrums
-    dragonfly-reverb
+    calf 
+    # distrho-ports
     guitarix
-    FIL-plugins
+
+    # - Individual Packs
+    # eq10q
+    dragonfly-reverb
     delayarchitect
-    airwindows-lv2
-    stone-phaser
+    # x42-plugins
+    # x42-gmsynth
+    # x42-avldrums
+    # FIL-plugins
+    # airwindows-lv2
+    # stone-phaser
     # autotalent
-    talentedhack
-    ninjas2
-    sfizz
+    # talentedhack
+    # ninjas2
+    # sfizz
     
     # Support for Windows VST2/VST3 plugins
     yabridge 

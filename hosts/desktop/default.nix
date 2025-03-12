@@ -12,5 +12,5 @@ in
     ./hardware.nix
   ];
 
-  drivers.nvidia.enable = false;
+  drivers.nvidia.enable = true;
 }
