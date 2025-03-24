@@ -78,6 +78,7 @@
     image = ../wallpapers/green-fish.jpg;
     polarity = "dark";
     opacity.terminal = 0.9;
+    # targets.vscode.profileNames = [ "john" ];
   };
 
   # Enable peer to peer file syncing
@@ -187,6 +188,7 @@
     vscode
     kitty
     code-cursor
+    windsurf
     nodejs_23
     gh
     github-desktop
@@ -194,7 +196,7 @@
     python3Full
 
     syncthing
-    syncthing-tray
+    # syncthing-tray
     obsidian
     kdePackages.filelight
     ntfs3g
