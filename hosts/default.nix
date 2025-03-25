@@ -195,6 +195,7 @@
     age
     cargo
     python3Full
+    godot_4
 
     syncthing
     # syncthing-tray
