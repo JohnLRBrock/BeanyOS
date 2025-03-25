@@ -193,6 +193,7 @@
     gh
     github-desktop
     age
+    cargo
     python3Full
 
     syncthing
