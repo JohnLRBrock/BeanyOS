@@ -186,15 +186,17 @@
     vim
     neovim
     vscode
-    kitty
+    sublime
     code-cursor
     windsurf
-    nodejs_23
+    kitty
     gh
     github-desktop
     age
-    cargo
+    nodejs_23
     python3Full
+    cargo
+    rustup
     godot_4
 
     syncthing
