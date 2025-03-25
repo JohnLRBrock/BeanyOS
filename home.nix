@@ -8,19 +8,21 @@ in
 {
   programs.vscode = {
     enable = true;
-    enableUpdateCheck = false;
-    extensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
-      dracula-theme.theme-dracula
-      asvetliakov.vscode-neovim
-      oderwat.indent-rainbow
-    ];
-    userSettings = {
-      # "editor.fontFamily" = "'DejaVu Sans Mono'";
-      # "terminal.integrated.fontFamily" = "'DejaVu Sans Mono'";
-      "workbench.colorTheme" = "Stylix";
-      "extensions.experimental.affinity" = {
-        "asvetliakov.vscode-neovim" = 1;
+    profiles.default = {
+      enableUpdateCheck = false;
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        dracula-theme.theme-dracula
+        asvetliakov.vscode-neovim
+        oderwat.indent-rainbow
+      ];
+      userSettings = {
+        # "editor.fontFamily" = "'DejaVu Sans Mono'";
+        # "terminal.integrated.fontFamily" = "'DejaVu Sans Mono'";
+        "workbench.colorTheme" = "Stylix";
+        "extensions.experimental.affinity" = {
+          "asvetliakov.vscode-neovim" = 1;
+        };
       };
     };
   };

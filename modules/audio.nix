@@ -67,7 +67,7 @@ in
   ];
 
   # Disable pusleaudio when enabling sound with pipewire.
-  hardware.pulseaudio.enable = false; 
+  services.pulseaudio.enable = false; 
   services.pipewire = {
     enable = true;
 
