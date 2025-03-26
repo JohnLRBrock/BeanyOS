@@ -198,6 +198,7 @@
     cargo
     rustup
     godot_4
+    gcc
 
     syncthing
     # syncthing-tray
@@ -217,6 +218,7 @@
     ventoy-full
     # unetbootin
     zoom-us
+    shutter
 
     # Simple bar for Wayland/Hyprland
     # waybar
