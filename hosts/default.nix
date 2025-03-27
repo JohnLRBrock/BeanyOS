@@ -185,6 +185,7 @@
   environment.systemPackages = with pkgs; [
     vim
     neovim
+    helix
     vscode
     sublime
     code-cursor
