@@ -197,9 +197,11 @@
     nodejs_23
     python3Full
     cargo
-    rustup
-    godot_4
+    # rustup
+    trunk
+    # godot_4
     gcc
+    lld
 
     syncthing
     # syncthing-tray
