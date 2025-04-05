@@ -49,7 +49,7 @@ in
     # x42-gmsynth
     # x42-avldrums
     # FIL-plugins
-    # airwindows-lv2
+    airwindows-lv2
     # stone-phaser
     # autotalent
     # talentedhack
