@@ -209,7 +209,7 @@
     kdePackages.filelight
     ntfs3g
 
-    signald
+    signal-desktop
     discord
     slack
 
