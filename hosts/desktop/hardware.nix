@@ -24,10 +24,10 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
     
-  fileSystems."/home/john/Windows" = 
-    { device = "/dev/disk/by-uuid/01DB31B5176E2E60";
-      fsType = "ntfs3";
-    };
+#  fileSystems."/home/john/Windows" = 
+#    { device = "/dev/disk/by-uuid/01DB31B5176E2E60";
+#      fsType = "ntfs3";
+#    };
     
   fileSystems."/home/john/Shared" = 
     { device = "/dev/disk/by-uuid/823E22F73E22E43F";
