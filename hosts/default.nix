@@ -135,18 +135,33 @@
       };
     };
   };
-
-  services.printing.enable = true; # Enable CUPS to print documents
-  hardware.printers = {
-    ensurePrinters = [
-      {
-        name = "Brother_HL-L2350DW_series";
-        deviceUri = "ipp://192.168.0.161:631/ipp";
-        model = "everywhere";
-      }
-    ];
-    ensureDefaultPrinter = "Brother_HL-L2350DW_series";
+  
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
   };
+  
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      brlaser
+      brgenml1lpr
+      brgenml1cupswrapper
+    ];
+  };
+
+  # services.printing.enable = true; # Enable CUPS to print documents
+  # hardware.printers = {
+  #   ensurePrinters = [
+  #     {
+  #       name = "Brother_HL-L2350DW_series";
+  #       deviceUri = "ipp://192.168.0.161:631/ipp";
+  #       model = "everywhere";
+  #     }
+  #   ];
+  #   ensureDefaultPrinter = "Brother_HL-L2350DW_series";
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput = {
@@ -194,7 +209,6 @@
     gh
     github-desktop
     age
-    nodejs_23
     python3Full
     cargo
     # rustup
@@ -212,6 +226,7 @@
     signal-desktop
     discord
     slack
+    element-desktop
 
     spotify
     strawberry
@@ -219,11 +234,15 @@
 
     qbittorrent
     # A tool to create bootable live USB drives from ISO images.
-    ventoy-full
+    # ventoy-full
     # unetbootin
     zoom-us
     shutter
-
+    
+    brlaser
+    brgenml1lpr
+    brgenml1cupswrapper
+    
     # Simple bar for Wayland/Hyprland
     # waybar
     # (waybar.overrideAttrs (oldAttrs: {
@@ -262,8 +281,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8080 ];
-  networking.firewall.allowedUDPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [ 8080 12345 ];
+  networking.firewall.allowedUDPPorts = [ 8080 12345 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
