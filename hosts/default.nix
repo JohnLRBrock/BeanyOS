@@ -176,6 +176,12 @@
       accelProfile = "flat";
     };
   };
+  
+  # Enable media server
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.john = {
@@ -222,6 +228,9 @@
     obsidian
     kdePackages.filelight
     ntfs3g
+    jellyfin
+    jellyfin-web
+    jellyfin-ffmpeg
 
     signal-desktop
     discord
