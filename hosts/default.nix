@@ -260,7 +260,6 @@
     strawberry
     vlc
 
-    qbittorrent
     qbittorrent-nox
     # A tool to create bootable live USB drives from ISO images.
     # ventoy-full
