@@ -201,6 +201,25 @@
     remotePlay.openFirewall = true;
   };
 
+  # Start torrent client on boot
+  # Until you set a username and password they will be set to a default.
+  # To find them use `$journalctl | grep WebUI`
+  systemd.services."qbittorrent-nox@" = {
+    description = "qBittorrent-nox service for user %I";
+    documentation = ["man:qbittorrent-nox(1)"];
+    wants = ["network-online.target"];
+    after = ["local-fs.target" "network-online.target" "nss-lookup.target" "multi-user.target"]; # not sure if `multi-user.target` being here is not a conflict, remove it if so
+    serviceConfig = {
+      Type = "simple";
+      PrivateTmp = "false";
+      User = "%i";
+      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
+      TimeoutStopSec = 1800;
+    };
+  };
+
+  systemd.targets.multi-user.wants = ["qbittorrent-nox@john.service"];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -242,6 +261,7 @@
     vlc
 
     qbittorrent
+    qbittorrent-nox
     # A tool to create bootable live USB drives from ISO images.
     # ventoy-full
     # unetbootin
