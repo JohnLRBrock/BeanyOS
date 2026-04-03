@@ -234,7 +234,6 @@
     gh
     github-desktop
     age
-    python3Full
     cargo
     # rustup
     trunk
@@ -250,6 +249,7 @@
     jellyfin
     jellyfin-web
     jellyfin-ffmpeg
+    vlc
 
     signal-desktop
     discord

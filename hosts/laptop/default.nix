@@ -13,7 +13,7 @@ in
     # ../../../modules/audio.nix
     # ../../../modules/nvidia-drivers.nix
   ];
-    xnixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnfree = true;
 
     # Enable nvidia graphics card
     # hardware = {
