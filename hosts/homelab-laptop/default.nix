@@ -1,7 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./hardware.nix ];
+  imports = [
+    ./hardware.nix
+    ./storage.nix
+  ];
 
   networking.hostName = "homelab-laptop";
   networking.networkmanager.enable = true;
@@ -15,8 +18,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     openssh.authorizedKeys.keys = [ ];
   };
-
-  services.openssh.settings.PasswordAuthentication = true;
 
   sops.defaultSopsFile = ../../secrets/default.yaml;
   sops.age.keyFile = "/var/lib/sops-nix/key.txt";

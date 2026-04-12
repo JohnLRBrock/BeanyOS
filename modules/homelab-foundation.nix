@@ -36,7 +36,7 @@
     allowReboot = false;
     dates = "weekly";
     randomizedDelaySec = "45min";
-    flake = lib.mkDefault "path:/etc/nixos#homelab-laptop";
+    flake = lib.mkDefault "github:JohnLRBrock/BeanyOS#homelab-laptop";
   };
 
   environment.systemPackages = with pkgs; [
