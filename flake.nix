@@ -48,5 +48,15 @@
         }
       ];
     };
+    nixosConfigurations."homelab-laptop" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./modules/homelab-foundation.nix
+        inputs.stylix.nixosModules.stylix
+        ./modules/homelab-interactive-desktop.nix
+        ./hosts/homelab-laptop
+        sops-nix.nixosModules.sops
+      ];
+    };
   };
 }
