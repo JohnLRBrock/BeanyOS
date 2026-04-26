@@ -10,14 +10,21 @@
   networking.firewall.enable = lib.mkDefault true;
   networking.firewall.allowedTCPPorts = lib.mkDefault [ ];
   networking.firewall.allowedUDPPorts = lib.mkDefault [ ];
+  networking.firewall.checkReversePath = lib.mkDefault "loose";
 
   services.openssh = {
     enable = true;
+    openFirewall = false;
     settings = {
       PermitRootLogin = "no";
       KbdInteractiveAuthentication = false;
     };
   };
+
+  services.tailscale.enable = lib.mkDefault true;
+
+  networking.firewall.interfaces."tailscale0".allowedTCPPorts = lib.mkDefault [ 22 ];
+  networking.firewall.interfaces."wlp3s0".allowedTCPPorts = lib.mkDefault [ 22 ];
 
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
@@ -44,6 +51,7 @@
     vim
     code-cursor
     age
+    tailscale
   ];
 
   system.stateVersion = "24.05";

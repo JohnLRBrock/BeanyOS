@@ -9,19 +9,8 @@
       auto_https disable_redirects
     '';
 
-    virtualHosts."jellyfin.homelab" = {
-      # Bind only to trusted interfaces/addresses.
-      listenAddresses = [
-        "127.0.0.1"
-        "100.89.105.95"
-        "192.168.0.179"
-      ];
-
-      serverAliases = [
-        "100.89.105.95"
-        "192.168.0.179"
-      ];
-
+    # Catch-all on private interfaces; firewall rules enforce trust boundaries.
+    virtualHosts.":80" = {
       extraConfig = ''
         reverse_proxy 127.0.0.1:8096
 
@@ -34,6 +23,6 @@
     };
   };
 
-  networking.firewall.interfaces."tailscale0".allowedTCPPorts = lib.mkDefault [ 80 443 ];
-  networking.firewall.interfaces."wlp3s0".allowedTCPPorts = lib.mkDefault [ 80 443 ];
+  networking.firewall.interfaces."tailscale0".allowedTCPPorts = lib.mkDefault [ 80 ];
+  networking.firewall.interfaces."wlp3s0".allowedTCPPorts = lib.mkDefault [ 80 ];
 }
