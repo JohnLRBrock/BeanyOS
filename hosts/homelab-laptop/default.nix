@@ -16,7 +16,17 @@
     isNormalUser = true;
     description = "John Brock";
     extraGroups = [ "networkmanager" "wheel" ];
-    openssh.authorizedKeys.keys = [ ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEPIoFGNZR3pTDpDAc30WfKVDuq1wJ8M/NsRM0ginTXW john@homelab-laptop"
+    ];
+  };
+
+  services.openssh.settings.PasswordAuthentication = false;
+
+  homelab.publicEdge = {
+    enable = true;
+    hostname = "latenight.kaijutea.party";
+    enableDDNS = false;
   };
 
   sops.defaultSopsFile = ../../secrets/default.yaml;
