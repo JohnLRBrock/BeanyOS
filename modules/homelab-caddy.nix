@@ -4,6 +4,7 @@
   services.caddy = {
     enable = lib.mkDefault true;
     openFirewall = false;
+    email = "johnlrbrock@gmail.com";
 
     globalConfig = ''
       auto_https disable_redirects
