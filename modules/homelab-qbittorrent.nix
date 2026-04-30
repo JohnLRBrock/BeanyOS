@@ -55,7 +55,7 @@ in
     enable = lib.mkEnableOption "qBittorrent-nox with a public Web UI hostname";
     publicHostname = lib.mkOption {
       type = lib.types.str;
-      default = "torrents.kaijutea.party";
+      default = "brew.kaijutea.party";
     };
     torrentingPort = lib.mkOption {
       type = lib.types.port;

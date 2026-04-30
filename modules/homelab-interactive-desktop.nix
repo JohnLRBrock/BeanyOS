@@ -26,5 +26,13 @@
 
   programs.firefox.enable = true;
 
+  services.keyd = {
+    enable = true;
+    keyboards.default.settings.main = {
+      capslock = "esc";
+      esc = "capslock";
+    };
+  };
+
   users.users.john.extraGroups = lib.mkAfter [ "video" ];
 }

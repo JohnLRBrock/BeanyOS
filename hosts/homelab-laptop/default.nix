@@ -29,7 +29,10 @@
     enableDDNS = false;
   };
 
-  homelab.qbittorrent.enable = true;
+  homelab.qbittorrent = {
+    enable = true;
+    publicHostname = "brew.kaijutea.party";
+  };
 
   sops.defaultSopsFile = ../../secrets/default.yaml;
   sops.age.keyFile = "/var/lib/sops-nix/key.txt";
