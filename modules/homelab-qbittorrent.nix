@@ -83,6 +83,8 @@ in
     };
 
     systemd.services.qbittorrent = {
+      wants = [ "sops-install-secrets.service" ];
+      after = [ "sops-install-secrets.service" ];
       serviceConfig.ReadWritePaths = [
         "/mnt/data-bulk/torrents"
         "/mnt/data-bulk/torrents/incomplete"

@@ -51,6 +51,7 @@
     vim
     code-cursor
     age
+    sops
     tailscale
   ];
 
