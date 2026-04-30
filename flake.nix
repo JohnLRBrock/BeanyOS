@@ -54,6 +54,7 @@
         ./modules/homelab-foundation.nix
         ./modules/homelab-jellyfin.nix
         ./modules/homelab-caddy.nix
+        ./modules/homelab-qbittorrent.nix
         ./modules/homelab-public-edge.nix
         inputs.stylix.nixosModules.stylix
         ./modules/homelab-interactive-desktop.nix
