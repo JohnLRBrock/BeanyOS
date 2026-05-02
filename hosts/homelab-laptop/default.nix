@@ -18,6 +18,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEPIoFGNZR3pTDpDAc30WfKVDuq1wJ8M/NsRM0ginTXW john@homelab-laptop"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBKAWLhjFAVUdJrXjPQeEmJX1InuZ6l4jDFpRjhyj+Dq john@desktop"
     ];
   };
 
