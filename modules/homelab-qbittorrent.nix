@@ -65,7 +65,9 @@ in
 
   config = lib.mkIf hcfg.enable {
     sops.secrets."qbittorrent-webui-password-pbkdf2" = {
-      mode = "0400";
+      owner = config.services.qbittorrent.user;
+      group = config.services.qbittorrent.group;
+      mode = "0440";
     };
 
     systemd.tmpfiles.rules = [

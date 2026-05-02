@@ -21,7 +21,10 @@
     };
   };
 
-  services.tailscale.enable = lib.mkDefault true;
+  services.tailscale = {
+    enable = lib.mkDefault true;
+    extraUpFlags = [ "--ssh" ];
+  };
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = lib.mkDefault [ 22 ];
   networking.firewall.interfaces."wlp3s0".allowedTCPPorts = lib.mkDefault [ 22 ];
